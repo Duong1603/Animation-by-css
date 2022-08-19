@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   background: #e0e5ec;
 }
@@ -1042,6 +1043,7 @@ body {
   );
 }
 
+/* ------------------------------------------------------------------------------------------------------------------------------ */
 /* button check box */
 ul li {
   color: #aaaaaa;
@@ -1118,3 +1120,669 @@ input[type="radio"]:checked ~ .check::before {
 input[type="radio"]:checked ~ label {
   color: #0dff92;
 }
+
+/* ----------------------------------------------------------------------------------------------------------------------------------- */
+/* CSS Border Transitions */
+button {
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+  margin: 1em;
+  padding: 1em 2em;
+  box-shadow: inset 0 0 0 2px #f45e61;
+  color: #f45e61;
+  font-size: inherit;
+  font-weight: 700;
+  position: relative;
+  vertical-align: middle;
+}
+button::before,
+button::after {
+  box-sizing: inherit;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.draw {
+  transition: color 0.25s;
+}
+.draw::before,
+.draw::after {
+  border: 2px solid transparent;
+  width: 0;
+  height: 0;
+}
+.draw::before {
+  top: 0;
+  left: 0;
+}
+.draw::after {
+  bottom: 0;
+  right: 0;
+}
+.draw:hover {
+  color: #60daaa;
+}
+.draw:hover::before,
+.draw:hover::after {
+  width: 100%;
+  height: 100%;
+}
+.draw:hover::before {
+  border-top-color: #60daaa;
+  border-right-color: #60daaa;
+  transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
+}
+.draw:hover::after {
+  border-bottom-color: #60daaa;
+  border-left-color: #60daaa;
+  transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s,
+    height 0.25s ease-out 0.75s;
+}
+
+.meet:hover {
+  color: #fbca67;
+}
+.meet::after {
+  top: 0;
+  left: 0;
+}
+.meet:hover::before {
+  border-top-color: #fbca67;
+  border-right-color: #fbca67;
+}
+.meet:hover::after {
+  border-bottom-color: #fbca67;
+  border-left-color: #fbca67;
+  transition: height 0.25s ease-out, width 0.25s ease-out 0.25s;
+}
+
+.center:hover {
+  color: #6477b9;
+}
+.center::before,
+.center::after {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transform-origin: center;
+}
+.center::before {
+  border-top: 2px solid #6477b9;
+  border-bottom: 2px solid #6477b9;
+  transform: scale3d(0, 1, 1);
+}
+.center::after {
+  border-left: 2px solid #6477b9;
+  border-right: 2px solid #6477b9;
+  transform: scale3d(1, 0, 1);
+}
+.center:hover::before,
+.center:hover::after {
+  transform: scale3d(1, 1, 1);
+  transition: transform 0.5s;
+}
+
+.spin {
+  width: 5em;
+  height: 5em;
+  padding: 0;
+}
+.spin:hover {
+  color: #0eb7da;
+}
+.spin::before,
+.spin::after {
+  top: 0;
+  left: 0;
+}
+.spin::before {
+  border: 2px solid transparent;
+}
+.spin:hover::before {
+  border-top-color: #0eb7da;
+  border-right-color: #0eb7da;
+  border-bottom-color: #0eb7da;
+  transition: border-top-color 0.15s linear,
+    border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
+}
+.spin::after {
+  border: 0 solid transparent;
+}
+.spin:hover::after {
+  border-top: 2px solid #0eb7da;
+  border-left-width: 2px;
+  border-right-width: 2px;
+  transform: rotate(270deg);
+  transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s;
+}
+
+.circle {
+  border-radius: 100%;
+  box-shadow: none;
+}
+.circle::before,
+.circle::after {
+  border-radius: 100%;
+}
+
+.thick {
+  color: #f45e61;
+}
+.thick:hover {
+  color: #fff;
+  font-weight: 700;
+}
+.thick::before {
+  border: 2.5em solid transparent;
+  z-index: -1;
+}
+.thick::after {
+  mix-blend-mode: color-dodge;
+  z-index: -1;
+}
+.thick:hover::before {
+  background: #f45e61;
+  border-top-color: #f45e61;
+  border-right-color: #f45e61;
+  border-bottom-color: #f45e61;
+  transition: background 0s linear 0.4s, border-top-color 0.15s linear,
+    border-right-color 0.15s linear 0.15s,
+    border-bottom-color 0.15s linear 0.25s;
+}
+.thick:hover::after {
+  border-top: 2.5em solid #f45e61;
+  border-left-width: 2.5em;
+  border-right-width: 2.5em;
+}
+
+/* CodePen Home CSS3 Button Hover Effects with FontAwesome */
+.effect {
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  text-transform: capitalize;
+  /* background-color: - add your own background-color */
+  font-family: "Roboto", sans-serif;
+  /* put your font-family */
+  font-size: 18px;
+  padding: 20px 0px;
+  width: 150px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* effect-1 styles */
+.effect.effect-1 {
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-1:before {
+  content: "";
+  font-family: FontAwesome;
+  font-size: 15px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  height: 100%;
+  width: 40px;
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-1:hover {
+  text-indent: -20px;
+}
+.effect.effect-1:hover:before {
+  opacity: 1;
+  text-indent: 0px;
+}
+
+/* effect-2 styles */
+.effect.effect-2 {
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-2:before {
+  content: "";
+  font-family: FontAwesome;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: -30px;
+  width: 30px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 0px 6px 6px 0px;
+  transition: all 0.2s linear 0s;
+  text-align: center;
+}
+.effect.effect-2:hover {
+  text-indent: -30px;
+}
+.effect.effect-2:hover:before {
+  right: 0;
+  text-indent: 0px;
+}
+
+/* effect-3 styles */
+.effect.effect-3 {
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-3:before {
+  content: "";
+  font-family: FontAwesome;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 100%;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 30px;
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-3:hover {
+  text-indent: -9999px;
+}
+.effect.effect-3:hover:before {
+  top: 0;
+  text-indent: 0;
+}
+
+/* effect-4 styles */
+.effect.effect-4 {
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-4:before {
+  content: "";
+  font-family: FontAwesome;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 30px;
+  transform: scale(0, 1);
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-4:hover {
+  text-indent: -9999px;
+}
+.effect.effect-4:hover:before {
+  transform: scale(1, 1);
+  text-indent: 0;
+}
+
+/* effect-5 styles */
+.effect.effect-5 {
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-5:before {
+  content: "";
+  font-family: FontAwesome;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  height: 100%;
+  width: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 0 50% 50% 0;
+  transform: scale(0, 1);
+  transform-origin: left center;
+  transition: all 0.2s linear 0s;
+}
+.effect.effect-5:hover {
+  text-indent: 30px;
+}
+.effect.effect-5:hover:before {
+  transform: scale(1, 1);
+  text-indent: 0;
+}
+
+.button-effect {
+  padding: 30px 0px;
+}
+.button-effect h2 {
+  font-family: "Droid Serif", serif;
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+.button-effect a {
+  margin-right: 17px;
+}
+.button-effect a:nth-child(2) {
+  background-color: #541388;
+}
+.button-effect a:nth-child(3) {
+  background-color: #d90368;
+}
+.button-effect a:nth-child(4) {
+  background-color: #104547;
+}
+.button-effect a:nth-child(5) {
+  background-color: #4f000b;
+}
+.button-effect a:nth-child(6) {
+  background-color: #f28123;
+}
+.button-effect a:last-child {
+  margin-right: 0px;
+}
+
+/* Button CSS */
+/* BY ESTEBAN MAUVAIS
+[--=INDEX=--]
+/BODY
+/GRADIENTS
+  /GREEN
+  /PINK
+  /RED
+  /ORANGE
+  /BLUE
+/BASE BUTTON
+/ROTATE
+[--=END INDEX=--]
+*/
+
+/*BODY*/
+body {
+  font-family: "Roboto", sans-serif;
+}
+body,
+.button:after {
+  background: #2c3e50;
+}
+.ctn {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+footer {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  color: #fff;
+}
+footer a,
+footer a:after {
+  font-size: 1em !important;
+}
+/*END BODY*/
+
+/*GRADIENTS*/
+/*GREEN*/
+.b-green,
+.b-green:before {
+  background: rgba(73, 155, 234, 1);
+  background: -moz-linear-gradient(
+    45deg,
+    rgba(73, 155, 234, 1) 0%,
+    rgba(26, 188, 156, 1) 100%
+  );
+  background: -webkit-gradient(
+    left bottom,
+    right top,
+    color-stop(0%, rgba(73, 155, 234, 1)),
+    color-stop(100%, rgba(26, 188, 156, 1))
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(73, 155, 234, 1) 0%,
+    rgba(26, 188, 156, 1) 100%
+  );
+  background: -o-linear-gradient(
+    45deg,
+    rgba(73, 155, 234, 1) 0%,
+    rgba(26, 188, 156, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    45deg,
+    rgba(73, 155, 234, 1) 0%,
+    rgba(26, 188, 156, 1) 100%
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(73, 155, 234, 1) 0%,
+    rgba(26, 188, 156, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#1abc9c', GradientType=1 );
+}
+/*PINK*/
+.b-pink,
+.b-pink:before {
+  background: rgba(231, 72, 234, 1);
+  background: -moz-linear-gradient(
+    45deg,
+    rgba(231, 72, 234, 1) 0%,
+    rgba(75, 26, 188, 1) 100%
+  );
+  background: -webkit-gradient(
+    left bottom,
+    right top,
+    color-stop(0%, rgba(231, 72, 234, 1)),
+    color-stop(100%, rgba(75, 26, 188, 1))
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(231, 72, 234, 1) 0%,
+    rgba(75, 26, 188, 1) 100%
+  );
+  background: -o-linear-gradient(
+    45deg,
+    rgba(231, 72, 234, 1) 0%,
+    rgba(75, 26, 188, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    45deg,
+    rgba(231, 72, 234, 1) 0%,
+    rgba(75, 26, 188, 1) 100%
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(231, 72, 234, 1) 0%,
+    rgba(75, 26, 188, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e748ea', endColorstr='#4b1abc', GradientType=1 );
+}
+/*RED*/
+.b-red,
+.b-red:before {
+  background: rgba(234, 110, 72, 1);
+  background: -moz-linear-gradient(
+    45deg,
+    rgba(234, 110, 72, 1) 0%,
+    rgba(188, 26, 99, 1) 100%
+  );
+  background: -webkit-gradient(
+    left bottom,
+    right top,
+    color-stop(0%, rgba(234, 110, 72, 1)),
+    color-stop(100%, rgba(188, 26, 99, 1))
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(234, 110, 72, 1) 0%,
+    rgba(188, 26, 99, 1) 100%
+  );
+  background: -o-linear-gradient(
+    45deg,
+    rgba(234, 110, 72, 1) 0%,
+    rgba(188, 26, 99, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    45deg,
+    rgba(234, 110, 72, 1) 0%,
+    rgba(188, 26, 99, 1) 100%
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(234, 110, 72, 1) 0%,
+    rgba(188, 26, 99, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea6e48', endColorstr='#bc1a63', GradientType=1 );
+}
+/*ORANGE*/
+.b-orange,
+.b-orange:before {
+  background: rgba(255, 193, 7, 1);
+  background: -moz-linear-gradient(
+    45deg,
+    rgba(255, 193, 7, 1) 0%,
+    rgba(255, 87, 34, 1) 100%
+  );
+  background: -webkit-gradient(
+    left bottom,
+    right top,
+    color-stop(0%, rgba(255, 193, 7, 1)),
+    color-stop(100%, rgba(255, 87, 34, 1))
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 193, 7, 1) 0%,
+    rgba(255, 87, 34, 1) 100%
+  );
+  background: -o-linear-gradient(
+    45deg,
+    rgba(255, 193, 7, 1) 0%,
+    rgba(255, 87, 34, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    45deg,
+    rgba(255, 193, 7, 1) 0%,
+    rgba(255, 87, 34, 1) 100%
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(255, 193, 7, 1) 0%,
+    rgba(255, 87, 34, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc107', endColorstr='#ff5722', GradientType=1 );
+}
+/*BLUE*/
+.b-blue,
+.b-blue:before {
+  background: rgba(5, 118, 255, 1);
+  background: -moz-linear-gradient(
+    45deg,
+    rgba(5, 118, 255, 1) 0%,
+    rgba(36, 248, 255, 1) 100%
+  );
+  background: -webkit-gradient(
+    left bottom,
+    right top,
+    color-stop(0%, rgba(5, 118, 255, 1)),
+    color-stop(100%, rgba(36, 248, 255, 1))
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(5, 118, 255, 1) 0%,
+    rgba(36, 248, 255, 1) 100%
+  );
+  background: -o-linear-gradient(
+    45deg,
+    rgba(5, 118, 255, 1) 0%,
+    rgba(36, 248, 255, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    45deg,
+    rgba(5, 118, 255, 1) 0%,
+    rgba(36, 248, 255, 1) 100%
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(5, 118, 255, 1) 0%,
+    rgba(36, 248, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0576ff', endColorstr='#24f8ff', GradientType=1 );
+}
+/*END GRADIENTS*/
+/*BASE BUTTON*/
+.button {
+  display: inline-block;
+  position: relative;
+  border-radius: 3px;
+  text-decoration: none;
+  padding: 0.5em;
+  margin: 0.5em;
+  font-size: 2em;
+  font-weight: bold;
+  transition: all 0.5s;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.button:hover {
+  text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.75);
+}
+.button:hover:after {
+  left: 100%;
+  top: 100%;
+  bottom: 100%;
+  right: 100%;
+}
+.button:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+.button:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  bottom: 2px;
+  right: 2px;
+  z-index: -1;
+  border-radius: 5px;
+  transition: all 0.5s;
+}
+.button2 {
+  display: inline-block;
+  font-size: 2em;
+  margin: 0.5em;
+  padding: 0.5em;
+  border-radius: 5px;
+  transition: all 0.5s;
+  filter: hue-rotate(0deg);
+  color: #fff;
+  text-decoration: none;
+}
+/*END BASE BUTTON*/
+/*ROTATE*/
+.rot-360-noscoop:hover {
+  filter: hue-rotate(360deg);
+  transform: rotate(360deg);
+}
+.rot-135:hover {
+  filter: hue-rotate(135deg);
+}
+.rot-90:hover {
+  filter: hue-rotate(90deg);
+}
+/*END ROTATE*/
